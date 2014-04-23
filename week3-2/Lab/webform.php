@@ -26,6 +26,13 @@ and open the template in the editor.
                  //todo print out error in a list
                  // only if there is a count to the array
                  // else data must be all valid
+                    if ( count($signup) ) {
+                echo '<ul class="error">';
+                foreach ($signup as $value) {
+                    echo '<li>',$value,'</li>';
+                }
+                echo '</ul>';
+            }
                   print_r($signup->getErrors());
                 }
             }
