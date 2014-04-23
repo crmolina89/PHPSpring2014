@@ -16,26 +16,29 @@ and open the template in the editor.
         // put your code here
                 
             $signup = new Signup();
-            
+            $errors = array();
+       
             if ( $signup->isPostRequest()  ) {
                  
                 if ( $signup->entryIsValid() ) {
                     echo '<div class="success">All fields are good</div>';
                 } else {
+                    $errors = $signup->getErrors();
+                }
             
                  //todo print out error in a list
                  // only if there is a count to the array
                  // else data must be all valid
-                    if ( count($signup) ) {
+                   if ( count($errors) ) {
                 echo '<ul class="error">';
-                foreach ($signup as $value) {
+                foreach ($errors as $value) {
                     echo '<li>',$value,'</li>';
                 }
                 echo '</ul>';
             }
                   print_r($signup->getErrors());
                 }
-            }
+            
           
         ?>
         
