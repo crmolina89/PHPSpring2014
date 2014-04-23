@@ -15,7 +15,7 @@ Goals:
         <meta charset="UTF-8">
         <title></title>
         <style>
-            // set up the classes
+            /* set up the classes */
             .error {
                 border: 1px solid red;
                 padding: 0.2em;
