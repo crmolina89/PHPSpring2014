@@ -95,6 +95,13 @@ class Signup {
     public function usernameEntryIsValid() {
         
          //todo put logic here (same as email)
+        $username = $this->getUsername();
+         
+         if ( empty($username) ) {
+            $this->errors["username"] = "Username is missing.";
+         } else if ( !Validator::nameIsValid($this->getUsername()) ) {
+            $this->errors["username"] = "Username is not valid.";                
+         }
         
         return ( empty($this->errors["username"]) ? true : false ) ;
     }
@@ -109,7 +116,18 @@ class Signup {
         
          //todo put logic here (same as email)
         // also check if it matches confirmpassword
-        
+        $password = $this->getPassword();
+         
+         if ( empty($password) ) {
+            $this->errors["password"] = "Password is missing.";
+         } 
+         else if ( $this->getConfirmpassword() !== $this->getPassword() ){
+             $this->errors["password"] = "Password does not match confirmation password.";
+         }
+         else if ( !Validator::passwordIsValid($this->getPassword()) ) {
+            $this->errors["password"] = "Password is not valid.";                
+         }
+      
         return ( empty($this->errors["password"]) ? true : false ) ;
     }
     

@@ -18,14 +18,13 @@ and open the template in the editor.
             $signup = new Signup();
             $errors = array();
        
-            if ( $signup->isPostRequest()  ) {
-                 
+            if ( $signup->isPostRequest()  ) {  
                 if ( $signup->entryIsValid() ) {
                     echo '<div class="success">All fields are good</div>';
                 } else {
                     $errors = $signup->getErrors();
                 }
-            
+            }
                  //todo print out error in a list
                  // only if there is a count to the array
                  // else data must be all valid
@@ -35,9 +34,8 @@ and open the template in the editor.
                     echo '<li>',$value,'</li>';
                 }
                 echo '</ul>';
-            }
-                  print_r($signup->getErrors());
                 }
+                  
             
           
         ?>
@@ -48,19 +46,19 @@ and open the template in the editor.
 		<legend>Sign-up Form:</legend>
                 <label for="email">E-mail:</label> 
                 <input id="email" type="text" name="email" value="<?php echo $signup->getEmail(); ?>" /> <br />
-                
+                <?php echo Util::getErrorMessageHTML('email', $errors); ?>
                 
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="username" value="<?php echo $signup->getUsername(); ?>" /> <br /> 
-                
+                <?php echo Util::getErrorMessageHTML('username', $errors); ?>
                 
                 <label for="password">Password:</label>
                 <input id="password" type="password" name="password" /> <br />           
-            
+                <?php echo Util::getErrorMessageHTML('password', $errors); ?>
                 
                 <label for="confirmpassword">Confirm Password:</label>
                 <input id="confirmpassword" type="password" name="confirmpassword" /> <br />           
-                
+                <?php echo Util::getErrorMessageHTML('confirmpassword', $errors); ?>
 
                 <input type="submit" value="Submit" />
             </fieldset>
