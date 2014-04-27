@@ -34,6 +34,7 @@ class Validator {
     * @return boolean
     */    
     public static function nameIsValid($name) {
+        // If its a string and its not empty it will pass as valid name
         return ( is_string($name) && !empty($name) );       
     }
     
@@ -45,6 +46,7 @@ class Validator {
     * @return boolean
     */    
     public static function passwordIsValid($password) {
+        // If its a string, its not empty, and the string length is greater than 6 it will pass as valid
         return ( is_string ($password) && !empty ($password) && strlen($password) > 6 != false);
     }
 }

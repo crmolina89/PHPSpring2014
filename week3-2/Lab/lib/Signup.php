@@ -95,14 +95,18 @@ class Signup {
     public function usernameEntryIsValid() {
         
          //todo put logic here (same as email)
+        // set the var equal to function call of username
         $username = $this->getUsername();
-         
+         // If the field is empty
          if ( empty($username) ) {
+             // Will send it to errors as username and display the message to user
             $this->errors["username"] = "Username is missing.";
+            // Other test calls the validator class and nameisvalid function to test
+            // the user name is it returns invalid the message is displayed to the user
          } else if ( !Validator::nameIsValid($this->getUsername()) ) {
             $this->errors["username"] = "Username is not valid.";                
          }
-        
+        //Will return if its empty and whether any errors are contained
         return ( empty($this->errors["username"]) ? true : false ) ;
     }
     
@@ -116,18 +120,23 @@ class Signup {
         
          //todo put logic here (same as email)
         // also check if it matches confirmpassword
+        // set the var equal to function call of getpassword
         $password = $this->getPassword();
-         
+         // If the fields empty
          if ( empty($password) ) {
+             // Will send it to errors as username and display the message to user
             $this->errors["password"] = "Password is missing.";
          } 
+         // Calls the password function above and if its not equal to the orgincal password returns error
          else if ( $this->getConfirmpassword() !== $this->getPassword() ){
+             // Message displayed to user
              $this->errors["password"] = "Password does not match confirmation password.";
          }
+         // Also goes test the password against the password is valid function in the validator class
          else if ( !Validator::passwordIsValid($this->getPassword()) ) {
             $this->errors["password"] = "Password is not valid.";                
          }
-      
+         //Will return if its empty and whether any errors are contained
         return ( empty($this->errors["password"]) ? true : false ) ;
     }
     
