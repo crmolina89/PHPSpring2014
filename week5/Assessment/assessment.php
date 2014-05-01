@@ -16,6 +16,7 @@ and open the template in the editor.
         // set up the variables and check post set it to post
         $username = filter_input(INPUT_POST, 'username');
         $comments = filter_input(INPUT_POST, 'comments');
+        $state = filter_input(INPUT_POST, 'state');
         $state_list = array('AL'=>"Alabama",  
 			'AK'=>"Alaska",  
 			'AZ'=>"Arizona",  
@@ -68,7 +69,14 @@ and open the template in the editor.
 			'WI'=>"Wisconsin",  
 			'WY'=>"Wyoming");
                 
-        
+                        if ( count($_POST) ) {
+                echo '<ul class="error">';
+                foreach ($_POST as $value) {
+                    echo '<li>',$value,'</li>';
+                }
+                echo '</ul>';
+                }
+                
         ?>
         
         <form name="mainform" action="#" method="post"> 
@@ -79,8 +87,8 @@ and open the template in the editor.
                 <input id="username" type="text" name="username" /> <br /> 
                 
                 <label for="state">State:</label>
-                <select id="state" type="text" name="state"><option><?php foreach($state_list as $value) {
-    echo "<option value =$value> $value </option>"  ?> </option> </select> <br />           
+                <select id="state" type="text" name="state"><option value ="<?php foreach($state_list as $value) {
+                echo "<option value=\"$value\"> $value </option>"; } ?>" </option> </select> <br />           
 
                 <label for="comments">Comments:</label>
                 <input id="comments" type="text" name="comments" /> <br />           
