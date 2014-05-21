@@ -43,14 +43,24 @@ and open the template in the editor.
                 
                 <label for="state">State:</label>
                 <select id="state" type="text" name="state">
-                <?php foreach ($st)    
-                    <option value ="<?php foreach ($state_list as $state) {
-                echo "<option value=\"$state\"> $state </option>"; } ?>" </option> 
+               
+                    
+                     <?php foreach ($state as $state_list) {
+                  // if ($main->getList() == $value){
+                   //  echo "<option value=\"$value\" selected = \"selected\">$value</option>\n";
+                   //}
+                     //    else {
+                   
+                         echo "<option value=\"$state_list\">$state_list</option>\n"; 
+                         
+                         }
+                ?>
+                    
                 </select> <br />  
                 <?php echo Validator::getErrorMessageHTML('state', $errors); ?>
 
                 <label for="comments">Comments:</label>
-                <input id="comments" type="text" name="comments" /> <br />
+                <textarea id="comments" type="text" name="comments"> </textarea> <br />
                 <?php echo Validator::getErrorMessageHTML('comment', $errors); ?>
 
                 <input type="submit" value="Submit" />
