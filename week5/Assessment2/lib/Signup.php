@@ -15,66 +15,15 @@ class Signup {
     //put your code here
     private $username;
     private $comment;
-   
+    private $state;
     private $errors = array();
     
-    private $state_list = array('AL'=>"Alabama",  
-			'AK'=>"Alaska",  
-			'AZ'=>"Arizona",  
-			'AR'=>"Arkansas",  
-			'CA'=>"California",  
-			'CO'=>"Colorado",  
-			'CT'=>"Connecticut",  
-			'DE'=>"Delaware",  
-			'DC'=>"District Of Columbia",  
-			'FL'=>"Florida",  
-			'GA'=>"Georgia",  
-			'HI'=>"Hawaii",  
-			'ID'=>"Idaho",  
-			'IL'=>"Illinois",  
-			'IN'=>"Indiana",  
-			'IA'=>"Iowa",  
-			'KS'=>"Kansas",  
-			'KY'=>"Kentucky",  
-			'LA'=>"Louisiana",  
-			'ME'=>"Maine",  
-			'MD'=>"Maryland",  
-			'MA'=>"Massachusetts",  
-			'MI'=>"Michigan",  
-			'MN'=>"Minnesota",  
-			'MS'=>"Mississippi",  
-			'MO'=>"Missouri",  
-			'MT'=>"Montana",
-			'NE'=>"Nebraska",
-			'NV'=>"Nevada",
-			'NH'=>"New Hampshire",
-			'NJ'=>"New Jersey",
-			'NM'=>"New Mexico",
-			'NY'=>"New York",
-			'NC'=>"North Carolina",
-			'ND'=>"North Dakota",
-			'OH'=>"Ohio",  
-			'OK'=>"Oklahoma",  
-			'OR'=>"Oregon",  
-			'PA'=>"Pennsylvania",  
-			'RI'=>"Rhode Island",  
-			'SC'=>"South Carolina",  
-			'SD'=>"South Dakota",
-			'TN'=>"Tennessee",  
-			'TX'=>"Texas",  
-			'UT'=>"Utah",  
-			'VT'=>"Vermont",  
-			'VA'=>"Virginia",  
-			'WA'=>"Washington",  
-			'WV'=>"West Virginia",  
-			'WI'=>"Wisconsin",  
-			'WY'=>"Wyoming");
             
     function __construct() {
           
         $this->username = filter_input(INPUT_POST, 'username');
         $this->comment = filter_input(INPUT_POST, 'comments');
-        $this->state_list = filter_input(INPUT_POST, 'state');
+        $this->state = filter_input(INPUT_POST, 'state');
     }
 
     
@@ -87,7 +36,7 @@ class Signup {
     }
     
     public function getState() {
-        return $this->state_list;
+        return $this->state;
     }
    /**
     * A method to return all errors found in the post
@@ -179,12 +128,64 @@ class Signup {
     
     public function entryIsValid(){
         $this->usernameEntryIsValid();
-        $this->commentEntryIsValidEntryIsValid();
+        $this->commentEntryIsValid();
         $this->stateEntryIsValid();
         
         return ( count($this->errors) ? false : true );
     }
     
-    
+    public function getStates() {
+        return array('AL'=>"Alabama",  
+			'AK'=>"Alaska",  
+			'AZ'=>"Arizona",  
+			'AR'=>"Arkansas",  
+			'CA'=>"California",  
+			'CO'=>"Colorado",  
+			'CT'=>"Connecticut",  
+			'DE'=>"Delaware",  
+			'DC'=>"District Of Columbia",  
+			'FL'=>"Florida",  
+			'GA'=>"Georgia",  
+			'HI'=>"Hawaii",  
+			'ID'=>"Idaho",  
+			'IL'=>"Illinois",  
+			'IN'=>"Indiana",  
+			'IA'=>"Iowa",  
+			'KS'=>"Kansas",  
+			'KY'=>"Kentucky",  
+			'LA'=>"Louisiana",  
+			'ME'=>"Maine",  
+			'MD'=>"Maryland",  
+			'MA'=>"Massachusetts",  
+			'MI'=>"Michigan",  
+			'MN'=>"Minnesota",  
+			'MS'=>"Mississippi",  
+			'MO'=>"Missouri",  
+			'MT'=>"Montana",
+			'NE'=>"Nebraska",
+			'NV'=>"Nevada",
+			'NH'=>"New Hampshire",
+			'NJ'=>"New Jersey",
+			'NM'=>"New Mexico",
+			'NY'=>"New York",
+			'NC'=>"North Carolina",
+			'ND'=>"North Dakota",
+			'OH'=>"Ohio",  
+			'OK'=>"Oklahoma",  
+			'OR'=>"Oregon",  
+			'PA'=>"Pennsylvania",  
+			'RI'=>"Rhode Island",  
+			'SC'=>"South Carolina",  
+			'SD'=>"South Dakota",
+			'TN'=>"Tennessee",  
+			'TX'=>"Texas",  
+			'UT'=>"Utah",  
+			'VT'=>"Vermont",  
+			'VA'=>"Virginia",  
+			'WA'=>"Washington",  
+			'WV'=>"West Virginia",  
+			'WI'=>"Wisconsin",  
+			'WY'=>"Wyoming");
+    }
 
 }
