@@ -32,7 +32,7 @@ and open the template in the editor.
                     echo $signup->getUsername();
                     echo '<br \>';
                     // display state
-                    echo $signup->getState();
+                    echo $state[$signup->getState()];
                     echo '<br \>';
                     echo $signup->getComment();
                     // display user comments
@@ -64,15 +64,20 @@ and open the template in the editor.
                      // Get the state as key value
                      foreach ($state as $key=>$value) {
                          // echo out the key as the values 
-                     echo "<option value=\"$key\">$value</option>\n"; 
+                         if( $key === $signup->getState() ){
+                        echo "<option selected=\"selected\" value=\"$key\">$value</option>\n"; 
                          }
+                         else {
+                        echo "<option value=\"$key\">$value</option>\n"; 
+                         }
+                     }
                 ?>
                     
                 </select> <br /> 
                 <?php echo Validator::getErrorMessageHTML('state', $errors); ?>
 
                 <label for="comments">Comments:</label>
-                <textarea id="comments" type="text" name="comments"> </textarea> <br />
+                <textarea id="comments" type="text" name="comments" ><?php echo $signup->getComment(); ?></textarea> <br />
                 <?php echo Validator::getErrorMessageHTML('comment', $errors); ?>
 
                 <input type="submit" value="Submit" />
