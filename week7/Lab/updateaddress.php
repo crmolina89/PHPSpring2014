@@ -10,8 +10,9 @@
         // put your code here
         
         Util::confirmAccess();
-      
         
+        // Get a var set it to the class states and call the function to get states
+        $state_list = States::getState();
          $address = new AddressBook();
          
          
@@ -55,21 +56,23 @@
                 <select id="state" type="text" name="state">
                 
                      <?php 
-                     // Get the state as key value
-                     foreach ($state as $key => $value) {
-                     //foreach ($state as $key=>$value) {
-                         // echo out the key as the values 
-                        // if( $key === $signup->getState() ){
-                       // echo "<option selected=\"selected\" value=\"$key\">$value</option>\n"; 
-                         //}
-                        // else {
-                        echo "<option value=\"$state\">$value</option>\n"; 
-                         //}
-                     }
+                 // it will loop through each state get a pair value    
+                foreach ($state_list as $key => $value ) {
+                    
+                   // If the key has a value it will echo that out
+                   if ($key === $addressResult['state'] ){
+                     echo "<option value=\"$key\" selected = \"selected\">$value</option>\n";
+                   }
+                   // Else it will echo out just the drop down
+                   else{
+                       echo "<option value=\"$key\">$value</option>\n";
+                   }
+                         
+                }
+                     
                 ?>
                     
                 </select> <br /> 
-                <input id="state" type="text" name="state" value="<?php echo $addressResult['state']; ?>" /> <br />
                               
                 <label for="zip">ZIP:</label> 
                 <input id="zip" type="text" name="zip" value="<?php echo $addressResult['zip']; ?>" /> <br />

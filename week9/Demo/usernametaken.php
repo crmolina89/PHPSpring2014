@@ -13,7 +13,7 @@ $checkUsername = array( "taken" => 'Available',
 $login = new Login();
 
 if ( $login->usernameTaken($usernameRequest) ) {
-    $checkUsername['taken'] = "Unavailable";
+    $checkUsername["taken"] = "Unavailable";
 }
 
 echo json_encode($checkUsername);
