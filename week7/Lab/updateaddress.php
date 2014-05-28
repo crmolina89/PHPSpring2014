@@ -30,6 +30,7 @@
          $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
          
          $addressResult = $address->read($id);
+         $state = $address->read('state');
           //print_r($addressResult);
           
          if ( !is_array($addressResult) || count($addressResult) <= 0 ) {
@@ -51,6 +52,23 @@
                 <input id="city" type="text" name="city" value="<?php echo $addressResult['city']; ?>" /> <br />
                
                 <label for="state">State:</label> 
+                <select id="state" type="text" name="state">
+                
+                     <?php 
+                     // Get the state as key value
+                     foreach ($state as $key => $value) {
+                     //foreach ($state as $key=>$value) {
+                         // echo out the key as the values 
+                        // if( $key === $signup->getState() ){
+                       // echo "<option selected=\"selected\" value=\"$key\">$value</option>\n"; 
+                         //}
+                        // else {
+                        echo "<option value=\"$state\">$value</option>\n"; 
+                         //}
+                     }
+                ?>
+                    
+                </select> <br /> 
                 <input id="state" type="text" name="state" value="<?php echo $addressResult['state']; ?>" /> <br />
                               
                 <label for="zip">ZIP:</label> 
