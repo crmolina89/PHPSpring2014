@@ -12,5 +12,8 @@ $checkUsername = array( "taken" => 'Available',
         
 $login = new Login();
 
+if ( $login->usernameTaken($usernameRequest) ) {
+    $checkUsername['taken'] = "Unavailable";
+}
 
 echo json_encode($checkUsername);
