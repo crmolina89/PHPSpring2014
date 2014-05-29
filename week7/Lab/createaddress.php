@@ -20,7 +20,7 @@
              
               $AddressbookModel = new AddressbookModel(filter_input_array(INPUT_POST));
               
-              if ( $address->update($AddressbookModel) ) {
+              if ( $address->create($AddressbookModel) ) {
                   echo '<p>Address updated</p>';
               } else {
                    echo '<p>Address Could not update</p>';
@@ -28,29 +28,19 @@
           }
          
          
-         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-         
-         $addressResult = $address->read($id);
-         $state = $address->read('state');
-          //print_r($addressResult);
-          
-         if ( !is_array($addressResult) || count($addressResult) <= 0 ) {
-             Util::redirect('viewaddress');
-         }
-         
         ?>
         
         <form name="mainform" action="#" method="post"> 
            <fieldset>
 		<legend>Update:</legend>
                 <label for="name">Name:</label> 
-                <input id="name" type="text" name="name" value="<?php echo $addressResult['name']; ?>" /> <br />
+                <input id="name" type="text" name="name" value="" /> <br />
                
                 <label for="address">Address:</label> 
-                <input id="address" type="text" name="address" value="<?php echo $addressResult['address']; ?>" /> <br />
+                <input id="address" type="text" name="address" value="" /> <br />
                
                 <label for="city">City:</label> 
-                <input id="city" type="text" name="city" value="<?php echo $addressResult['city']; ?>" /> <br />
+                <input id="city" type="text" name="city" value="" /> <br />
                
                 <label for="state">State:</label> 
                 <select id="state" type="text" name="state">
@@ -58,16 +48,8 @@
                      <?php 
                  // it will loop through each state get a pair value    
                 foreach ($state_list as $key => $value ) {
-                    
-                   // If the key has a value it will echo that out
-                   if ($key === $addressResult['state'] ){
-                     echo "<option value=\"$key\" selected = \"selected\">$value</option>\n";
-                   }
-                   // Else it will echo out just the drop down
-                   else{
-                       echo "<option value=\"$key\">$value</option>\n";
-                   }
-                         
+                   // it will echo out just the drop down
+                       echo "<option value=\"$key\">$value</option>\n"; 
                 }
                      
                 ?>
@@ -75,15 +57,16 @@
                 </select> <br /> 
                               
                 <label for="zip">ZIP:</label> 
-                <input id="zip" type="text" name="zip" value="<?php echo $addressResult['zip']; ?>" /> <br />
+                <input id="zip" type="text" name="zip" value="" /> <br />
                
                 
-                <input type="hidden" name="id" value="<?php echo $addressResult['id']; ?>" />
+                <input type="hidden" name="id" value="" />
                 <input type="submit" value="Submit" />
             </fieldset>
         </form>
         <br />
         <a href="viewaddress.php">View Address</a>
+        
         
     </body>
 </html>

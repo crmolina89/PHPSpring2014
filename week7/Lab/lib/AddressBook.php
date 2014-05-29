@@ -14,14 +14,45 @@
 class AddressBook extends DB{
     //put your code here
     
+    /**
+    * A method with constructor to set Database 
+    *    
+    */  
     function __construct() {
         $this->setDb();
     }
     
-    public function create() {
+    /**
+    * A method to create $AddressbookModel 
+    *    
+    * @return boolean
+    */  
+    public function create($AddressbookModel) {
+         $result = false;
         
+        
+         if ( null !== $this->getDB() && $AddressbookModel instanceof AddressbookModel) {
+            $dbs = $this->getDB()->prepare('insert into addressbook set address = :address, city = :city, state = :state, zip = :zip, name = :name');
+            $dbs->bindParam(':address', $AddressbookModel->address, PDO::PARAM_STR);
+            $dbs->bindParam(':city', $AddressbookModel->city, PDO::PARAM_STR);
+            $dbs->bindParam(':state', $AddressbookModel->state, PDO::PARAM_STR);
+            $dbs->bindParam(':zip', $AddressbookModel->zip, PDO::PARAM_STR);
+            $dbs->bindParam(':name', $AddressbookModel->name, PDO::PARAM_STR);
+            
+            if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+                $result = true;
+            }
+        
+         }   
+        
+        return $result;
     }
     
+    /**
+    * A method to update $AddressbookModel 
+    *    
+    * @return boolean
+    */  
     public function update($AddressbookModel) {
         $result = false;
         
@@ -44,6 +75,11 @@ class AddressBook extends DB{
         return $result;
     }
     
+    /**
+    * A method to read the id 
+    *    
+    * @return value
+    */  
     public function read($id = 0) {
        if ($id !== 0) {
            return $this->readByID($id);
@@ -53,6 +89,11 @@ class AddressBook extends DB{
         
     }
     
+    /**
+    * A method to read the ID where there is present
+    *    
+    * @return value
+    */  
      private function readByID($id){
            $results = array();
            
@@ -69,6 +110,11 @@ class AddressBook extends DB{
            return $results;
      }
     
+     /**
+    * A method to read every ID if not value is assigned
+    *    
+    * @return value
+    */  
     private function readAll(){
          $results = array();
         
