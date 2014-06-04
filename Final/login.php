@@ -17,6 +17,7 @@ and open the template in the editor.
         
         <fieldset>
             <legend>Login</legend>
+            <!--Redirect user to the main site-->
             <p> Not a member, <a href="mainSignup.php">Signup</a></p>
  
                         

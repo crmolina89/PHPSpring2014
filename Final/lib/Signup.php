@@ -108,12 +108,7 @@ class Signup {
              // Will send it to errors as username and display the message to user
             $this->errors["password"] = "Password is missing.";
          } 
-         // Calls the password function above and if its not equal to the orgincal password returns error
-         //else if ( $this->getConfirmpassword() !== $this->getPassword() ){
-             // Message displayed to user
-         //    $this->errors["password"] = "Password does not match confirmation password.";
-         //}
-         // Also goes test the password against the password is valid function in the validator class
+         // goes test the password against the password is valid function in the validator class
          else if ( !Validator::passwordIsValid($this->getPassword()) ) {
             $this->errors["password"] = "Password is not valid.";                
          }

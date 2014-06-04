@@ -20,21 +20,21 @@ and open the template in the editor.
         <div id='about'>  
             <h2>Welcome to our website</h2> 
             <p><a href="CMSpage.php">Edit</a></p>
-            <!--INSERT--><br />
+            <!--INSERT--><textarea></textarea><br />
   
         </div>
         
         <div id="contact">
            
             <div id="email"> 
-                 <div class="iconHeader">&#x2709;</div>
+                <textarea>&#x2709;</textarea>
                <!--INSERT-->           </div>
             <div id="phone"> 
-                 <div class="iconHeader">&#x2706;</div>
+                <textarea>&#x2706;</textarea>
                <!--INSERT--> 
             </div>
              <div id="address">
-                <div class="iconHeader">&#x270e;</div>
+                 <textarea>&#x270e;</textarea></div>
                 <!--INSERT-->           </div>
         </div>
         

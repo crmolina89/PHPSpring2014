@@ -13,14 +13,14 @@ and open the template in the editor.
     <body>
                  
         <h1>SaaS Project</h1>
-        
+        <!-- redirect to main signup page-->
         <a href="mainSignup.php">Logout</a>
         
          <fieldset>
         
         <legend> Edit your Page</legend>
                 
-        
+        <!-- sends to view page preview on index-->
         <div id="preview"> <a href="index.php?page=test" target="popup">View Page</a></div>
         
          <form name="mainform" action="#" method="post">

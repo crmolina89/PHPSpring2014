@@ -26,7 +26,7 @@ class Password {
     }
     
     /**
-    * A getter to get the variable passcode
+    * A getter to get the variable password
     *    
     * @return value
     */ 
@@ -35,7 +35,7 @@ class Password {
     }
 
     /**
-    * A setter that sets the variable passcode to what is in the var
+    * A setter that sets the variable password to what is in the var
     *    
     * @return value
     */ 
@@ -44,8 +44,8 @@ class Password {
     }
     
      /**
-    * A function to determine if the passcode is valid
-    * it calls method to get passcode and tests if whats in pass_code 
+    * A function to determine if the password is valid
+    * it calls method to get password and tests if whats in password 
     * is equal to config class pass_code 
     *    
     * @return boolean

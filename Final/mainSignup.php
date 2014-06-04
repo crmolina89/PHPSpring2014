@@ -17,7 +17,6 @@ and open the template in the editor.
         // put your code here
         // Set my variables   
             $signup = new Signup();
-            //$state = $signup->getStates();
             $errors = array();  
             
             // Set var calling function in signup class
@@ -25,6 +24,7 @@ and open the template in the editor.
                 // if the var goes to the function in class sign up
                 // if returns true
                 if ( $signup->entryIsValid() ) {
+                    //Redirects to login site
                     Util::redirect('login.php'); 
                 } else {
                     // Else it will call the get errors function in the class
@@ -38,19 +38,22 @@ and open the template in the editor.
         
         <fieldset>
             <legend>Signup</legend>
+            <!-- Login will redirect to login on click-->
         <p> Already a member, <a href="login.php">Login</a></p>
          <form name="mainform" action="#" method="post">
             
              
                          <label>Web Site:</label> <input type="text" name="website" maxlength="30" /> <br />
+                         <!-- This echos out the errors underneath each field-->
                          <?php echo Util::getErrorMessageHTML('website', $errors); ?>
              
-            
+                                                                       <!-- This echos out the value as what the user entered as mail-->
                           <label>Email:</label> <input type="text" name="email" value="<?php echo $signup->getEmail(); ?>" /> <br />
                                <!--Here called the get errors function in the util class to display in form-->
                           <?php echo Util::getErrorMessageHTML('email', $errors); ?>
             
                           <label>Password:</label> <input type="password" name="password" /> <br />
+                          <!-- This echos out the errors underneath each field-->
                           <?php echo Util::getErrorMessageHTML('password', $errors); ?>
                
             <input type="submit" value="Submit" />
