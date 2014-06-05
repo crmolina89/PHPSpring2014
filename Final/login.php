@@ -22,15 +22,27 @@ and open the template in the editor.
             <p> Not a member, <a href="mainSignup.php">Signup</a></p>
  
             <?php $signup = new Signup();   
-            
+
+            $db = new PDO(Config::DB_DNS, Config::DB_USER, Config::DB_PASSWORD);
             if ( $signup->isPostRequest() ) {
                 $checkcode = new Password();
-
+                
+                if ( NULL != $db ) {
+                $statement = $db->prepare('select * from users where email = :email and password = :password limit 1');
+                $statement->bindParam(':email', $email, PDO::PARAM_STR);
+                $statement->bindParam(':password', $password, PDO::PARAM_STR);
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                if ( is_array($result) && array_key_exists("email", $result) ) { 
+                        $dbo->closeDB();
+                        print_r($result);                     
+                }
                 if ( $checkcode->isValidPassword() ) {
                     $_SESSION['validpassword'] = true;
                     Util::redirect('CMSpage');                   
                 } else {                    
                     $msg = 'Passcode is not valid.';
+                }
                 }
             }
             ?>    
