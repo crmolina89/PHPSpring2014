@@ -23,7 +23,7 @@ class Validator {
     */    
     public static function websiteIsValid($website) {
         // If its a string and its not empty it will pass as valid name
-        return ( is_string($website) && !empty($website) && ereg('/^[a-zA-Z]/', $website));       
+        return ( is_string($website) && !empty($website) && preg_match('/[a-zA-Z]+/', $website) != 0);       
     }
     
   /**

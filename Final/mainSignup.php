@@ -16,16 +16,22 @@ and open the template in the editor.
         <?php
         // put your code here
         // Set my variables   
+       // Util::confirmAccess();
+        
             $signup = new Signup();
             $errors = array();  
-            
+            $dataModel = new SignupModel(filter_input_array(INPUT_POST));
+             
             // Set var calling function in signup class
             if ( $signup->isPostRequest()  ) {  
                 // if the var goes to the function in class sign up
                 // if returns true
                 if ( $signup->entryIsValid() ) {
                     //Redirects to login site
-                    Util::redirect('login.php'); 
+
+                $id = $dataModel->create($signup);
+                    
+                    Util::redirect('login'); 
                 } else {
                     // Else it will call the get errors function in the class
                     $errors = $signup->getErrors();

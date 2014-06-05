@@ -139,4 +139,14 @@ class Signup {
         return ( count($this->errors) ? false : true );
     }
     
+     public function map($paramArr) {        
+        if ( is_array($paramArr) && count($paramArr) ) {                   
+            foreach ($paramArr as $key => $value) {
+                $method = 'set'.ucfirst($key);
+                if( method_exists($this, $method) ) {
+                    $this->$method($value);
+                }
+            }
+        }       
+    }
 }

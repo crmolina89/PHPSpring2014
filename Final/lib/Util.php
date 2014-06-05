@@ -56,4 +56,5 @@ class Util {
            Util::redirect('mainSignup');
         }
     }
+    
 }
